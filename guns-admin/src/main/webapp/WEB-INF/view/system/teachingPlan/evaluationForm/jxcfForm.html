@@ -1,0 +1,212 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <input hidden="hidden" id="planId" value="${planVisitor.planId}"/>
+        <input hidden="hidden" id="visitorId" value="${planVisitor.visitorId}"/>
+        <div class="form-horizontal" id="queryInfoForm">
+            <table class="table table-bordered">
+                <input hidden="hidden" name="id" id="id" value="${planVisitor.id}"/>
+                <tr>
+                    <th colspan="6" style="text-align: center;font-size: 18px;">成都中医药大学附属医院/临床医学院</br>教学查房评价表</th>
+                </tr>
+                <tr>
+                    <td colspan="2">&emsp;&emsp;科室：${item.deptName}</td>
+                    <td colspan="2">查房病种：${item.disease}</td>
+                    <td colspan="2">&emsp;&emsp;床号：${item.bedNumber}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&emsp;住院号：${item.inpatientNumber}</td>
+                    <td colspan="2">查房教师：${item.teachers}</td>
+                    <td colspan="2">&emsp;&emsp;职称：${item.teacherTitle}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">学生专业年级：${item.className}</td>
+                    <td colspan="2">&emsp;&emsp;时间：${item.classTime}</td>
+                    <td colspan="2">&emsp;&emsp;地点：${item.classPlace}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">评价标准</td>
+                    <td>满分</td>
+                    <td>得分</td>
+                </tr>
+                <tr>
+                    <td colspan="4">一、前期准备</td>
+                    <td>5分</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td colspan="4">1、提前2天告知、组织学生及学生</td>
+                    <td>3</td>
+                    <td><input style="width:30px;" name="scoreItem1" id="scoreItem1" value="${form.scoreItem1}" maxNum="3" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">2、选择临床常见病、多发病的教学病例</td>
+                    <td>2</td>
+                    <td><input style="width:30px;" name="scoreItem2" id="scoreItem2" value="${form.scoreItem2}" maxNum="2" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">二、示教室汇报病历</td>
+                    <td>20分</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td colspan="4">1、主查教师向参加人员指出本次教学查房的目的。</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem3" id="scoreItem3" value="${form.scoreItem3}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">2、学生示教室汇报病例（一般情况、病史、症状、体征、辅助检查、入院情况及诊断，住院后病情变化，诊疗效果及重要的临床检查结果。）</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem4" id="scoreItem4" value="${form.scoreItem4}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">3、带教老师补充纠正,主查房老师点评。</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem5" id="scoreItem5" value="${form.scoreItem5}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">4、本阶段要求时间：5-10分钟。</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">三、病房示范</td>
+                    <td>25分</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td colspan="4">1、病房：查房人员规范追问病史，示范查体、补充询问。</td>
+                    <td>20</td>
+                    <td><input style="width:30px;" name="scoreItem6" id="scoreItem6" value="${form.scoreItem6}" maxNum="20" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">2、示教室：点评中注意讲解和示范阳性及具有鉴别诊断意义的阴性症状与体征。</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem7" id="scoreItem7" value="${form.scoreItem7}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">3、本阶段要求时间：15-20分钟左右。</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">四、示教室讨论</td>
+                    <td>50分</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td colspan="4">1、对病人情况进行分析、讨论。</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem8" id="scoreItem8" value="${form.scoreItem8}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">2、以病人病情为中心，结合“三基”进行启发式教学，注意临床思维培养。</td>
+                    <td>20</td>
+                    <td><input style="width:30px;" name="scoreItem9" id="scoreItem9" value="${form.scoreItem9}" maxNum="20" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">3、理论联系实际，突出重点难点、条理清晰。</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem10" id="scoreItem10" value="${form.scoreItem10}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">4、结合病例，适当介绍学科新进展。</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem11" id="scoreItem11" value="${form.scoreItem11}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">5、调动实习医师主动参与查房，活跃教学气氛，各级医师的发言要语言流利。</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem12" id="scoreItem12" value="${form.scoreItem12}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">6、本阶段时间要求：15-20分钟</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">总分：</td>
+                    <td>100分</td>
+                    <td><span id="totalScoreSpan"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="6">总体评价：<input style="width:80%;" name="comment" id="comment" value="${form.comment}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6">改进意见：<input style="width:80%;" name="better" id="better" value="${form.better}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6">评价表设计意见：<input style="width:80%;" name="pjbsjyj" id="pjbsjyj" value="${form.pjbsjyj}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">督导专家：${planVisitor.visitorName}</td>
+                    <td colspan="2">教学查房教师：${item.teachers}</td>
+                    <td colspan="2">督导时间：${form.ddsj}</td>
+                </tr>
+                <tr>
+                    <td colspan="6">照片：</br>
+                        <div id="imgDiv" style="width: 100%;"></div></td>
+                </tr>
+            </table>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <div class="btnDiv1">
+                        <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.addSubmit()"/>
+                        <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+                    </div>
+                    <div class="btnDiv2">
+                        <#button btnCss="info" name="打印" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.printDdpj()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a id="bigA" target="_blank"><span id="bigSpan"></span></a>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/ddpj.js"></script>
+<style>
+    td{
+        word-break : break-all;white-space:pre-wrap;
+    }
+</style>
+<script>
+    laydate.render({
+        elem: '#classTime'
+    });
+    if('${editFlag}'=='view'){
+        $('.btnDiv1').hide();
+        if('${form.ddsj}'!=''){
+            $('.btnDiv2').show();
+        }
+        $('input').attr("readonly","readonly");
+    }else{
+        $('.btnDiv1').show();
+        $('.btnDiv2').hide();
+    }
+
+    $(function () {
+        var imgList='${imgList}';
+        if(imgList!='[]'){
+            var array = imgList.substr(1,imgList.length-2);
+            array = array.split(",");
+            var u='${UPLOAD_BASE_URL}';
+            if(array.length>0){
+                for(var i in array){
+                    var arrayUrl=array[i].trim();
+                    var imgNum= Number(i) + 1;
+                    var img="<img width='150px' height='150px' onclick='show(this.src)' src='"+u+arrayUrl+"' style='margin-right:5px;cursor:pointer;'/>" +
+                            "<input hidden='hidden' id='imgUrl"+imgNum+"' name='imgUrl"+imgNum+"' value='"+arrayUrl+"'/>";
+                    $("#imgDiv").append(img);
+                }
+            }
+        }
+    });
+
+    function show(url)
+    {
+        $("#bigA").attr("href",url);
+        $("#bigSpan").click();
+    }
+</script>
+@}

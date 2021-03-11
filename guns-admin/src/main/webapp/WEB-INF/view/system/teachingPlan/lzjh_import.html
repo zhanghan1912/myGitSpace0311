@@ -1,0 +1,28 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="checkFileFlag" name="checkFileFlag"/>
+            <form id="excelForm" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span style="float:left;line-height:23px;">选择导入：</span><input type="file" style="float:left;" id="file" name="file" onchange="checkFile(this);"/>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-12">
+                        模板文件：<a href="${ctxPath}/static/lzjhTemp.xls">导入模板.xls</a>
+                    </div>
+                </div>
+            </form>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="导入" id="ensure" icon="fa-check" clickFun="importExcel('circle')"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/lzjh_info.js"></script>
+@}

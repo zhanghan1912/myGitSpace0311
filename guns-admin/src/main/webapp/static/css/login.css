@@ -1,0 +1,159 @@
+html{height: 100%;}
+body.signin {
+    background: #18c8f6;
+    height: auto;
+    background:url("../img/login-background.jpg") no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(255,255,255,.95);
+}
+
+.signinpanel {
+    width: 750px;
+    margin: 10% auto 0 auto;
+}
+
+.signinpanel .logopanel {
+    float: none;
+    width: auto;
+    padding: 0;
+    background: none;
+}
+
+.signinpanel .signin-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.signinpanel .form-control {
+    display: block;
+    margin-top: 15px;
+}
+
+.signinpanel .uname {
+    background: #fff url(../img/user.png) no-repeat 95% center;color:#333;
+}
+
+.signinpanel .pword {
+    background: #fff url(../img/locked.png) no-repeat 95% center;color:#333;
+}
+
+.signinpanel .btn {
+    margin-top: 15px;
+}
+
+.signinpanel form {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,.3);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 30px;
+}
+
+.signup-footer{border-top: solid 1px rgba(255,255,255,.3);margin:20px 0;padding-top: 15px;}
+
+@media screen and (max-width: 768px) {
+    .signinpanel,
+    .signuppanel {
+        margin: 0 auto;
+        width: 420px!important;
+        padding: 20px;
+    }
+    .signinpanel form {
+        margin-top: 20px;
+    }
+    .signup-footer {
+        margin-bottom: 10px;
+    }
+    .signuppanel .form-control {
+        margin-bottom: 10px;
+    }
+    .signup-footer .pull-left,
+    .signup-footer .pull-right {
+        float: none !important;
+        text-align: center;
+    }
+    .signinpanel .signin-info ul {
+        display: none;
+    }
+}
+@media screen and (max-width: 320px) {
+    .signinpanel,
+    .signuppanel {
+        margin:0 20px;
+        width:auto;
+    }
+}
+
+/*----------login开始-------------*/
+.red{ color:#FF8208;}
+
+.fr{float:right;}
+.fl{float:left;}
+/*index_header*/
+.index_header{ height:65px;line-height:60px; min-width:1024px; margin:0 auto;}
+.index_header h1,.index_header h2{font-size:16px;}
+.index_header h2 a{padding:0 10px; border-right:1px solid #4b4b4b;}
+.index_header h2 .no_extra{ border-right:none;}
+.header_box{ width:1024px;margin:0 auto;}
+
+/*index_banner*/
+.banner{min-width:1024px; height:650px; background-color:white; background-image:url(../img/bg_index.png); background-repeat:no-repeat; background-position:center center;}
+.banner_box{ width:1024px; margin:0 auto;}
+.banner_logo{ padding-top:25px; margin-left:-100px;display:inline-block; float:left;}
+
+/*login*/
+.mainlogin{float:right;width:300px;height:340px;margin-top: 120px;background-color: rgba(176, 178, 183, 0.4);}
+.logintb{width:260px;color:#fff;font-size:16px;margin:0 auto;}
+.logintb_td img{ vertical-align:middle; padding-left:10px;*margin-top:-20px;}
+.logintb a{color:#fff;}
+.username,.password,.hbVerifyCode,.system{background:#fff;border-radius:3px;-webkit-border-radius:3px;
+    -moz-border-radius:3px;width:260px;height:40px;display:block;}
+.username i,.password i,.hbVerifyCode i,.system i{display:inline-block; height:40px; width:40px; float:left;}
+.username i{background:url(../img/user.png) no-repeat center;}
+.password i{background:url(../img/locked.png) no-repeat center;}
+.system i{background:url(../img/locked.png) no-repeat center;}
+.userI{background:url(../img/user.png) no-repeat center;}
+.lockedI{background:url(../img/locked.png) no-repeat center;}
+.hbVerifyCode i{background:url(../img/verifyCode.png) no-repeat center;}
+.loginsr,.loginsr_yz{border:0;background:#fff;height:38px;line-height:38px/0;*line-height:38px;color:#676767;font-size:14px;font-family:'微软雅黑';border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;padding-left:5px;}
+.btn_login{width:125px;height:40px;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius: 3px;font-family:'微软雅黑';border:0;background:#1ab394;color:#fff;cursor:pointer;}
+.log_tips{font-size:14px;}
+
+/*title*/
+.index_title{ text-align:center; font-size:32px; color:#4b4b4b;}
+.index_title p{font-size:16px;}
+
+/*index_footer*/
+.index_footer{min-width:1024px;padding:24px 0;color:#fff; background:#1ab394; text-align:center;}
+.footer_box{width:1024px; margin:0 auto;display: inline-block;}
+.footer_box ul{display:inline-block; float:left;}
+.links_item{border-left:1px solid #fff; line-height:1em; padding:0 1em; display:inline-block;float:left;}
+.no_extra{border-left:none;}
+.footer_box h2{ font-size:14px; }
+
+/*二维码*/
+.code{ width:600px;}
+.code font{font-weight:normal; display:inline; font-size:15px; margin-left:5px;}
+.code .Q_hand{ vertical-align:bottom;margin-top: 10px;}
+.code .android{ width:162px; height:40px; margin-left:15px; background:url(../img/wechat_w.png) no-repeat; float:right; display:inline-block;  margin-top: 10px;}
+.code .iphone{ width:162px; height:40px; margin-left:15px; background:url(../img/tipText.png) no-repeat; float:right; display:inline-block; margin-top: 10px;}
+.code .android:hover{ width:162px; height:40px; margin-left:15px; background:url(../img/wechat_b.png) no-repeat; float:right; display:inline-block;  margin-top: 10px; cursor:pointer;}
+.code .QR_android,.code .QR_iphone{width:162px; height:166px;background:url(../img/Q_kuang.png) no-repeat; }
+.code .QR_android{position: absolute;  margin-left: 438px; margin-top:52px;}
+.code .QR_iphone{position: absolute; margin-left: 260px; margin-top:52px;}
+.code .QR_code{ padding-top: 25px;}
+.content{ background:url(../img/bg_line.png) repeat-x; /*height:460px;*/}
+.logo_index{margin:0 auto; width:1000px; height:410px; padding-top:50px; background-image:url(../img/logo_index.png); background-repeat:no-repeat; background-position:10px 50px;}
+
+/*----------login结束-------------*/
+
+.selectBtn{border-width:1.4px;border-color:#1ab394;color:#1ab394;background-color:#f3f3f4;font-weight:500;}
+.backBtn{border-width:1.4px;border-color:#1ab394;color:#1ab394;background-color:#f3f3f4;font-weight:500;}

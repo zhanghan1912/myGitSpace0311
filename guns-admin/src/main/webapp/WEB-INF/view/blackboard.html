@@ -1,0 +1,438 @@
+@layout("/common/_container.html"){
+<div class="row">
+	<div class="col-sm-12">
+		<div class="col-sm-3">
+			<div class="small-box bg-aqua">
+				<div class="inner">
+					<h3><label id="theoryNumLabel"></label><sup style="font-size: 20px">个</sup></h3>
+					<p><label>理论教学课程数</label></p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-ios-bookmarks"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="small-box bg-green">
+				<div class="inner">
+					<h3><label id="clinicNumLabel"></label><sup style="font-size: 20px">个</sup></h3>
+					<p><label>临床教学课程数</label></p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-ios-bookmarks"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="small-box bg-yellow">
+				<div class="inner">
+					<h3><label id="invigilateNumLabel"></label><sup style="font-size: 20px">个</sup></h3>
+					<p><label>监考计划数</label></p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-ios-bookmarks"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="small-box bg-aqua">
+				<div class="inner">
+					<h3><label id="circleNumLabel"></label><sup style="font-size: 20px">个</sup></h3>
+					<p><label>全科轮转课程数</label></p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-ios-bookmarks"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-7">
+			<div class="nav-tabs-custom">
+				<!-- Tabs within a box -->
+				<ul class="nav nav-tabs pull-right ui-sortable-handle">
+					<li class="active"><a href="#theoryDataDivAll" data-toggle="tab" aria-expanded="true">理论教学</a></li>
+					<li class=""><a href="#clinicDataDivAll" data-toggle="tab" aria-expanded="false">临床教学</a></li>
+					<li class=""><a href="#invigilateDataDivAll" data-toggle="tab" aria-expanded="false">监考计划</a></li>
+					<li class=""><a href="#circleDataDivAll" data-toggle="tab" aria-expanded="false">全科轮转</a></li>
+					<li class="pull-left header"><i class="fa fa-inbox"></i> 资源统计</li>
+				</ul>
+				<div class="tab-content no-padding">
+					<!-- Morris chart - Sales -->
+					<div class="chart tab-pane active" id="theoryDataDivAll" style="position: relative; height: 350px;">
+						<div class="row">
+							<div class="col-md-9 col-sm-8">
+								<div id="theoryDataDiv" style="width: 500px; height: 330px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1535418901388"></div>
+							</div>
+							<div class="col-md-3 col-sm-4">
+								<div class="pad box-pane-right bg-green" style="min-height: 280px">
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="theoryNVNLabel"></label></h5>
+										<span class="description-text">未督导课程</span>
+									</div>
+									<!-- /.description-block -->
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="theoryVNLabel"></label></h5>
+										<span class="description-text">已督导课程</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="chart tab-pane" id="clinicDataDivAll" style="position: relative; height: 350px;">
+						<div class="row">
+							<div class="col-md-9 col-sm-8">
+								<div id="clinicDataDiv" style="width: 500px; height: 330px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1535418901389"></div>
+							</div>
+							<div class="col-md-3 col-sm-4">
+								<div class="pad box-pane-right bg-green" style="min-height: 280px">
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="clinicNVNLabel"></label></h5>
+										<span class="description-text">未督导课程</span>
+									</div>
+									<!-- /.description-block -->
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="clinicVNLabel"></label></h5>
+										<span class="description-text">已督导课程</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="chart tab-pane" id="invigilateDataDivAll" style="position: relative; height: 350px;">
+						<div class="row">
+							<div class="col-md-9 col-sm-8">
+								<div id="invigilateDataDiv" style="width: 500px; height: 330px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1535418901390"></div>
+							</div>
+							<div class="col-md-3 col-sm-4">
+								<div class="pad box-pane-right bg-green" style="min-height: 280px">
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="invigilateNVNLabel"></label></h5>
+										<span class="description-text">未督导课程</span>
+									</div>
+									<!-- /.description-block -->
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="invigilateVNLabel"></label></h5>
+										<span class="description-text">已督导课程</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="chart tab-pane" id="circleDataDivAll" style="position: relative; height: 350px;">
+						<div class="row">
+							<div class="col-md-9 col-sm-8">
+								<div id="circleDataDiv" style="width: 500px; height: 330px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1535418901391"></div>
+							</div>
+							<div class="col-md-3 col-sm-4">
+								<div class="pad box-pane-right bg-green" style="min-height: 280px">
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="circleNVNLabel"></label></h5>
+										<span class="description-text">未督导课程</span>
+									</div>
+									<!-- /.description-block -->
+									<div class="description-block margin-bottom">
+										<div class="sparkbar pad" data-color="#fff"><canvas width="34" height="30" style="display: inline-block; width: 34px; height: 30px; vertical-align: top;"></canvas></div>
+										<h5 class="description-header"><label id="circleVNLabel"></label></h5>
+										<span class="description-text">已督导课程</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<div class="box box-info" style="position: relative; left: 0px; top: 0px;">
+				<div class="box-header with-border">
+					<i class="fa fa-th"></i>
+					<h3 class="box-title">督导量统计（近七日）</h3>
+				</div>
+				<div class="box-body border-radius-none">
+					<div class="chart" id="line-chart" style="height: 328px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+						<div id="dateDataDiv" style="width: 100%; height: 320px; float: left; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1535418901392"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<link href="${ctxPath}/static/css/AdminLTE.min.css" rel="stylesheet">
+<script src="${ctxPath}/static/js/plugins/echarts/echarts.js"></script>
+<script type="text/javascript">
+	$(function(){
+		loadData();
+	});
+	function loadData(){
+		var theoryNumLabel='0';
+		var clinicNumLabel='0';
+		var invigilateNumLabel='0';
+		var circleNumLabel='0';
+		var list='${chartsData}';
+		var array = JSON.parse(list);
+		if(array.length>0){
+			for(var i in array){
+				if(array[i].plan_type=='theory'){
+					theoryNumLabel=array[i].totalNum;
+				}
+				if(array[i].plan_type=='clinic'){
+					clinicNumLabel=array[i].totalNum;
+				}
+				if(array[i].plan_type=='invigilate'){
+					invigilateNumLabel=array[i].totalNum;
+				}
+				if(array[i].plan_type=='circle'){
+					circleNumLabel=array[i].totalNum;
+				}
+			}
+		}
+		$("#theoryNumLabel").text(theoryNumLabel);
+		$("#clinicNumLabel").text(clinicNumLabel);
+		$("#invigilateNumLabel").text(invigilateNumLabel);
+		$("#circleNumLabel").text(circleNumLabel);
+	}
+
+	require.config({
+		paths: {
+			echarts:'${ctxPath}/static/js/plugins/echarts'
+		}
+	});
+	function showLineChart(myChart,lineLabel,lineValue,lineValue2,lineValue3,lineValue4){
+		var option = {
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data:['理论教学','临床教学','考核督导','全科轮转']
+			},
+			grid: {
+				left: '3%',
+				right: '4%',
+				bottom: '3%',
+				containLabel: true
+			},
+			toolbox: {
+				feature: {
+					saveAsImage: {}
+				}
+			},
+			xAxis: {
+				type: 'category',
+				boundaryGap: false,
+				data: lineLabel
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [
+				{
+					name:'理论教学',
+					type:'line',
+					stack: '总量',
+					data:lineValue,
+					smooth: true
+				},
+				{
+					name:'临床教学',
+					type:'line',
+					stack: '总量',
+					data:lineValue2,
+					smooth: true
+				},
+				{
+					name:'考核督导',
+					type:'line',
+					stack: '总量',
+					data:lineValue3,
+					smooth: true
+				},
+				{
+					name:'全科轮转',
+					type:'line',
+					stack: '总量',
+					data:lineValue4,
+					smooth: true
+				}
+			]
+		};
+		myChart.setOption(option);
+		myChart.getDataURL();
+	}
+
+	require(['echarts','echarts/chart/line'],function(ec){
+		var myChart = ec.init(document.getElementById('dateDataDiv'));
+		var lineLabel = []; //x轴文字
+		var lineValue =[];
+		var lineValue2 =[];
+		var lineValue3 =[];
+		var lineValue4 =[];
+		var list1='${chartsMap}';
+		var list2='${dateList}';
+		var map1=JSON.parse(list1);
+		var array2 = JSON.parse(list2);
+		if(array2.length>0){
+			for(var i in array2){
+				lineLabel.push(array2[i]);
+				if(map1.hasOwnProperty('theory'+array2[i])){
+					lineValue.push(map1['theory'+array2[i]]);
+				}else{
+					lineValue.push('0');
+				}
+				if(map1.hasOwnProperty('clinic'+array2[i])){
+					lineValue2.push(map1['clinic'+array2[i]]);
+				}else{
+					lineValue2.push('0');
+				}
+				if(map1.hasOwnProperty('invigilate'+array2[i])){
+					lineValue3.push(map1['invigilate'+array2[i]]);
+				}else{
+					lineValue3.push('0');
+				}
+				if(map1.hasOwnProperty('circle'+array2[i])){
+					lineValue4.push(map1['circle'+array2[i]]);
+				}else{
+					lineValue4.push('0');
+				}
+			}
+		}
+		if (lineLabel.length==0) {
+			lineLabel.push("");
+			lineValue.push("");
+		}
+		showLineChart(myChart,lineLabel,lineValue,lineValue2,lineValue3,lineValue4);
+	});
+
+	function showPieChart(myChart,num,visitornum){
+		var option = {
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+			series: [
+				{
+					name:'课程数',
+					type:'pie',
+					radius: ['50%', '70%'],
+					avoidLabelOverlap: false,
+					label: {
+						normal: {
+							show: false,
+							position: 'center'
+						},
+						emphasis: {
+							show: true,
+							textStyle: {
+								fontSize: '30',
+								fontWeight: 'bold'
+							}
+						}
+					},
+					labelLine: {
+						normal: {
+							show: false
+						}
+					},
+					data:[
+						{value:num, name:'未督导课程'},
+						{value:visitornum, name:'已督导课程'}
+					]
+				}
+			]
+		};
+		myChart.setOption(option);
+		myChart.getDataURL();
+	}
+	//理论教学
+	require(['echarts','echarts/chart/pie'],function(ec){
+		var myChart = ec.init(document.getElementById('theoryDataDiv'));
+		var totalnum = '0';
+		var visitornum = '0';
+		var num = '0';
+		var list='${chartsData}';
+		var array = JSON.parse(list);
+		if(array.length>0){
+			for(var i in array){
+				if(array[i].plan_type=='theory'){
+					totalnum=array[i].totalNum;
+					visitornum=array[i].visitorNum;
+					num=totalnum-visitornum;
+				}
+			}
+		}
+		$("#theoryNVNLabel").text(num);
+		$("#theoryVNLabel").text(visitornum);
+		showPieChart(myChart,num,visitornum);
+	});
+	//临床教学
+	require(['echarts','echarts/chart/pie'],function(ec){
+		var myChart = ec.init(document.getElementById('clinicDataDiv'));
+		var totalnum = '0';
+		var visitornum = '0';
+		var num = '0';
+		var list='${chartsData}';
+		var array = JSON.parse(list);
+		if(array.length>0){
+			for(var i in array){
+				if(array[i].plan_type=='clinic'){
+					totalnum=array[i].totalNum;
+					visitornum=array[i].visitorNum;
+					num=totalnum-visitornum;
+				}
+			}
+		}
+		$("#clinicNVNLabel").text(num);
+		$("#clinicVNLabel").text(visitornum);
+		showPieChart(myChart,num,visitornum);
+	});
+	//考核督导
+	require(['echarts','echarts/chart/pie'],function(ec){
+		var myChart = ec.init(document.getElementById('invigilateDataDiv'));
+		var totalnum = '0';
+		var visitornum = '0';
+		var num = '0';
+		var list='${chartsData}';
+		var array = JSON.parse(list);
+		if(array.length>0){
+			for(var i in array){
+				if(array[i].plan_type=='invigilate'){
+					totalnum=array[i].totalNum;
+					visitornum=array[i].visitorNum;
+					num=totalnum-visitornum;
+				}
+			}
+		}
+		$("#invigilateNVNLabel").text(num);
+		$("#invigilateVNLabel").text(visitornum);
+		showPieChart(myChart,num,visitornum);
+	});
+	//全科轮训
+	require(['echarts','echarts/chart/pie'],function(ec){
+		var myChart = ec.init(document.getElementById('circleDataDiv'));
+		var totalnum = '0';
+		var visitornum = '0';
+		var num = '0';
+		var list='${chartsData}';
+		var array = JSON.parse(list);
+		if(array.length>0){
+			for(var i in array){
+				if(array[i].plan_type=='circle'){
+					totalnum=array[i].totalNum;
+					visitornum=array[i].visitorNum;
+					num=totalnum-visitornum;
+				}
+			}
+		}
+		$("#circleNVNLabel").text(num);
+		$("#circleVNLabel").text(visitornum);
+		showPieChart(myChart,num,visitornum);
+	});
+</script>
+@}

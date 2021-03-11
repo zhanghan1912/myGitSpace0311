@@ -1,0 +1,78 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始日期" isTime="true"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束日期" isTime="true"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="courseName" name="课程名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="planType" name="督导类型" >
+                                    <option value="">全部</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="teachers" name="任课老师" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="visitorName" name="督导老师" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="classPlace" name="地&emsp;&emsp;点" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="查询" icon="fa-search" clickFun="TeachingPlan.search()"/>
+                                <#button name="查看" icon="fa-edit" clickFun="TeachingPlan.openTeachingPlanDetail()"/>
+                                <#button name="导出" icon="fa-external-link" clickFun="TeachingPlan.exportDdpj()"/>
+                            </div>
+                        </div>
+                        <#table id="TeachingPlanTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/ddpjcx.js"></script>
+<script>
+    laydate.render({
+        elem: '#beginTime',
+        format: 'yyyy-MM-dd HH:mm',
+        type: 'datetime'
+    });
+    laydate.render({
+        elem: '#endTime',
+        format: 'yyyy-MM-dd HH:mm',
+        type: 'datetime'
+    });
+    $(function () {
+        var systemId='${systemId}';
+        if(systemId=='Train'){
+            $("#planType").append("<option value='theory'>理论教学</option>");
+            $("#planType").append("<option value='clinic'>临床教学</option>");
+            $("#planType").append("<option value='activity'>教学大讲堂</option>");
+            $("#planType").append("<option value='circle'>中医全科轮训</option>");
+        }
+        if(systemId=='Education'){
+            $("#planType").append("<option value='theory'>理论教学</option>");
+            $("#planType").append("<option value='clinic'>实践教学</option>");
+            $("#planType").append("<option value='invigilate'>考试改革</option>");
+            $("#planType").append("<option value='activity'>教学活动</option>");
+        }
+    });
+</script>
+@}

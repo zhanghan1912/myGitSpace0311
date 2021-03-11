@@ -1,0 +1,199 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <input hidden="hidden" id="planId" value="${planVisitor.planId}"/>
+        <input hidden="hidden" id="visitorId" value="${planVisitor.visitorId}"/>
+        <div class="form-horizontal" id="queryInfoForm">
+            <table class="table table-bordered">
+                <input hidden="hidden" name="id" id="id" value="${planVisitor.id}"/>
+                <tr>
+                    <th colspan="6" style="text-align: center;font-size: 18px;">成都中医药大学附属医院/临床医学院</br>病案讨论评价表</th>
+                </tr>
+                <tr>
+                    <td colspan="3">&emsp;&emsp;科室：${item.deptName}</td>
+                    <td colspan="3">病例编号：${item.caseNumber}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&emsp;主持人：${item.teachers}</td>
+                    <td colspan="2">&emsp;记录人：${item.noteTaker}</td>
+                    <td colspan="2">参与人员：${item.participants}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">&emsp;&emsp;时间：${item.classTime}</td>
+                    <td colspan="3">&emsp;&emsp;地点：${item.classPlace}</td>
+                </tr>
+                <tr>
+                    <td>类别</td>
+                    <td colspan="3">评价项目</td>
+                    <td>分值</td>
+                    <td>得分</td>
+                </tr>
+                <tr>
+                    <td rowspan="7">病案讨论内容（60分）</td>
+                    <td colspan="3">1.病例选择合理，符合教学大纲要求，顾及学生实际水平</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem1" id="scoreItem1" value="${form.scoreItem1}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">2.准备充分，查阅有关资料</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem2" id="scoreItem2" value="${form.scoreItem2}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">3.实习生发言思路清晰，逻辑性强，重点突出</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem3" id="scoreItem3" value="${form.scoreItem3}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">4.讨论内容紧扣病例，理论与实际紧密结合</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem4" id="scoreItem4" value="${form.scoreItem4}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">5.诊断与鉴别诊断分析全面、深入、论证全面</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem5" id="scoreItem5" value="${form.scoreItem5}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">6.提问准确，解答耐心，深入、论证全面</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem6" id="scoreItem6" value="${form.scoreItem6}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">7.讨论内容充分，知识量大，反映学科新进展</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem7" id="scoreItem7" value="${form.scoreItem7}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">教学方法（15分）</td>
+                    <td colspan="3">8.实行启发式教学，注重能力培养</td>
+                    <td>10</td>
+                    <td><input style="width:30px;" name="scoreItem8" id="scoreItem8" value="${form.scoreItem8}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">9.讨论形式新颖，注重培养学生的临床思维</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem9" id="scoreItem9" value="${form.scoreItem9}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">教师态度（15分）</td>
+                    <td colspan="3">10.寓德育教育于讨论过程中，以身作则，为人师表</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem10" id="scoreItem10" value="${form.scoreItem10}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">11.发现学生对学习过程中存在的问题能及时解决</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem11" id="scoreItem11" value="${form.scoreItem11}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">12.对学生的组织纪律、考勤等，严格要求，认真管理</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem12" id="scoreItem12" value="${form.scoreItem12}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">讨论效果（10）</td>
+                    <td colspan="3">13.讨论氛围活跃、融洽</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem13" id="scoreItem13" value="${form.scoreItem13}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">14.讨论后对学生结合基础理论知识有所帮助和收获</td>
+                    <td>5</td>
+                    <td><input style="width:30px;" name="scoreItem14" id="scoreItem14" value="${form.scoreItem14}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" rowspan="2">总体评价</td>
+                    <td colspan="3">等级：<select style="width:100px;" name="grade" id="grade">
+                            <option value="优">优</option>
+                            <option value="良">良</option>
+                            <option value="中">中</option>
+                            <option value="及格">及格</option>
+                            <option value="不及格">不及格</option>
+                        </select></br>（优：90-100分&emsp;良：80-89分&emsp;中：70-79分&emsp;及格：60-69分&emsp;不及格：60分以下）</td>
+                    <td colspan="2">总分：<span id="totalScoreSpan"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="5">评语：<input style="width:80%;" name="comment" id="comment" value="${form.comment}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6">需要补充的意见和建议：<input style="width:80%;" name="proposal" id="proposal" value="${form.proposal}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">督导人：${planVisitor.visitorName}</td>
+                    <td colspan="2">授课教师：${item.teachers}</td>
+                    <td colspan="2">督导时间：${form.ddsj}</td>
+                </tr>
+                <tr>
+                    <td colspan="6">照片：</br>
+                        <div id="imgDiv" style="width: 100%;"></div></td>
+                </tr>
+            </table>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <div class="btnDiv1">
+                        <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.addSubmit()"/>
+                        <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+                    </div>
+                    <div class="btnDiv2">
+                        <#button btnCss="info" name="打印" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.printDdpj()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a id="bigA" target="_blank"><span id="bigSpan"></span></a>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/ddpj.js"></script>
+<style>
+    td{
+        word-break : break-all;white-space:pre-wrap;
+    }
+</style>
+<script>
+    laydate.render({
+        elem: '#classTime'
+    });
+    if('${editFlag}'=='view'){
+        $('.btnDiv1').hide();
+        if('${form.ddsj}'!=''){
+            $('.btnDiv2').show();
+        }
+        $('input').attr("readonly","readonly");
+    }else{
+        $('.btnDiv1').show();
+        $('.btnDiv2').hide();
+    }
+    var select=document.getElementById("grade");
+    for (var i = 0; i < select.options.length; i++){
+        if (select.options[i].value == '${form.grade}'){
+            select.options[i].selected = true;
+            break;
+        }
+    }
+
+    $(function () {
+        var imgList='${imgList}';
+        if(imgList!='[]'){
+            var array = imgList.substr(1,imgList.length-2);
+            array = array.split(",");
+            var u='${UPLOAD_BASE_URL}';
+            if(array.length>0){
+                for(var i in array){
+                    var arrayUrl=array[i].trim();
+                    var imgNum= Number(i) + 1;
+                    var img="<img width='150px' height='150px' onclick='show(this.src)' src='"+u+arrayUrl+"' style='margin-right:5px;cursor:pointer;'/>" +
+                            "<input hidden='hidden' id='imgUrl"+imgNum+"' name='imgUrl"+imgNum+"' value='"+arrayUrl+"'/>";
+                    $("#imgDiv").append(img);
+                }
+            }
+        }
+    });
+
+    function show(url)
+    {
+        $("#bigA").attr("href",url);
+        $("#bigSpan").click();
+    }
+</script>
+@}

@@ -1,0 +1,173 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div style="width: 100%;" id="theoryDiv">
+            <table class="table table-bordered">
+                <tr>
+                    <td>&emsp;&emsp;部门：${item.deptName}</td>
+                    <td>课程名称：${item.courseName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;时间：${item.classTime}</td>
+                    <td>教学类型：${item.activityName}</td>
+                </tr>
+                <tr>
+                    <td>任课老师：${item.teachers}</td>
+                    <td>&emsp;&emsp;地点：${item.classPlace}</td>
+                </tr>
+                <tr>
+                    <td>上课班号：${item.classNo}</td>
+                    <td>班级名称：${item.className}</td>
+                </tr>
+                <tr>
+                    <td>上课人数：${item.classNumber}</td>
+                    <td>班级构成：${item.classTarget}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;节次：${item.classOrder}</td>
+                    <td>&emsp;&emsp;备注：${item.memo}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;督导：${visitors}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 100%;" id="clinicDiv">
+            <table class="table table-bordered">
+                <tr>
+                    <td>&emsp;&emsp;部门：${item.deptName}</td>
+                    <td>课程名称：${item.courseName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;时间：${item.classTime}</td>
+                    <td>教学类型：${item.activityName}</td>
+                </tr>
+                <tr>
+                    <td>任课老师：${item.teachers}</td>
+                    <td>&emsp;&emsp;地点：${item.classPlace}</td>
+                </tr>
+                <tr>
+                    <td>上课班号：${item.classNo}</td>
+                    <td>班级名称：${item.className}</td>
+                </tr>
+                <tr>
+                    <td>上课人数：${item.classNumber}</td>
+                    <td>班级构成：${item.classTarget}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;节次：${item.classOrder}</td>
+                    <td>&emsp;&emsp;备注：${item.memo}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;督导：${visitors}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 100%;" id="invigilateDiv">
+            <table class="table table-bordered">
+                <tr>
+                    <td>&emsp;&emsp;部门：${item.deptName}</td>
+                    <td>主题名称：${item.courseName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;时间：${item.classTime}</td>
+                    <td>考核类型：${item.activityName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;地点：${item.classPlace}</td>
+                    <td>内容详情：${item.detail}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;备注：${item.memo}</td>
+                    <td>&emsp;&emsp;督导：${visitors}</td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 100%;" id="activityDiv">
+            <table class="table table-bordered">
+                <tr>
+                    <td>&emsp;&emsp;部门：${item.deptName}</td>
+                    <td>主题名称：${item.courseName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;时间：${item.classTime}</td>
+                    <td>活动类型：${item.activityName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;地点：${item.classPlace}</td>
+                    <td>内容详情：${item.detail}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;备注：${item.memo}</td>
+                    <td>&emsp;&emsp;督导：${visitors}</td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 100%;" id="circleDiv">
+            <table class="table table-bordered">
+                <tr>
+                    <td>&emsp;&emsp;部门：${item.deptName}</td>
+                    <td>主题名称：${item.courseName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;时间：${item.classTime}</td>
+                    <td>轮转类型：${item.activityName}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;地点：${item.classPlace}</td>
+                    <td>内容详情：${item.detail}</td>
+                </tr>
+                <tr>
+                    <td>&emsp;&emsp;备注：${item.memo}</td>
+                    <td>&emsp;&emsp;督导：${visitors}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/lljxjh_info.js"></script>
+<style>
+    td{
+        width:50%;word-break : break-all;white-space:pre-wrap;
+    }
+</style>
+<script>
+    if('${item.planType}'=='theory'){
+        $("#theoryDiv").show();
+        $("#clinicDiv").hide();
+        $("#invigilateDiv").hide();
+        $("#activityDiv").hide();
+        $("#circleDiv").hide();
+    }
+    if('${item.planType}'=='clinic'){
+        $("#theoryDiv").hide();
+        $("#clinicDiv").show();
+        $("#invigilateDiv").hide();
+        $("#activityDiv").hide();
+        $("#circleDiv").hide();
+    }
+    if('${item.planType}'=='invigilate'){
+        $("#theoryDiv").hide();
+        $("#clinicDiv").hide();
+        $("#invigilateDiv").show();
+        $("#activityDiv").hide();
+        $("#circleDiv").hide();
+    }
+    if('${item.planType}'=='activity'){
+        $("#theoryDiv").hide();
+        $("#clinicDiv").hide();
+        $("#invigilateDiv").hide();
+        $("#activityDiv").show();
+        $("#circleDiv").hide();
+    }
+    if('${item.planType}'=='circle'){
+        $("#theoryDiv").hide();
+        $("#clinicDiv").hide();
+        $("#invigilateDiv").hide();
+        $("#activityDiv").hide();
+        $("#circleDiv").show();
+    }
+</script>
+@}

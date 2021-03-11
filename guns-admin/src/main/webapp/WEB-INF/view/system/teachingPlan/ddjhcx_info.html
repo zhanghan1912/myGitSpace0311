@@ -1,0 +1,48 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="queryInfoForm">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" id="id" value="${item.id}">
+                    <input type="hidden" id="planType" value="${item.planType}">
+                    <#input id="citySel" name="部门" underline="true" readonly="readonly" hidden="deptId" hiddenValue="${item.deptId}" value="${item.deptName}"
+                            clickFun="TeachingPlanInfoDlg.showDeptSelectTree(); return false;" style="background-color: #ffffff !important;"/>
+                    <#input id="classTime" name="时间" value="${item.classTime}" underline="true"/>
+                    <#input id="teachers" name="任课老师" value="${item.teachers}" underline="true"/>
+                    <#input id="classNo" name="上课班号" value="${item.classNo}" underline="true"/>
+                    <#input id="classNumber" name="上课人数" value="${item.classNumber}" underline="true"/>
+                    <#input id="classOrder" name="节次" value="${item.classOrder}" underline="true"/>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="courseName" name="课程名称" value="${item.courseName}" underline="true"/>
+                    <#dictSelector id="activityType" name ="activityType" code="theory_type" label="教学类型" underline="true" value="${item.activityType}" />
+                    <#input id="classPlace" name="地点" value="${item.classPlace}" underline="true"/>
+                    <#input id="className" name="班级名称" value="${item.className}" underline="true"/>
+                    <#input id="classTarget" name="班级构成" value="${item.classTarget}" underline="true"/>
+                    <#input id="memo" name="备注" value="${item.memo}" underline="true"/>
+                </div>
+            </div>
+            <!-- 这是部门选择的下拉框 -->
+            <div id="menuContent" class="menuContent" style="display: none; position: absolute; z-index: 200;">
+                <ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/lljxjh_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#classTime',
+        format: 'yyyy-MM-dd HH:mm',
+        type: 'datetime'
+    });
+</script>
+@}

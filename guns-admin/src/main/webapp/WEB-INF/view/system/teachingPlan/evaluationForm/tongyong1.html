@@ -1,0 +1,103 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <input hidden="hidden" id="planId" value="${planVisitor.planId}"/>
+        <input hidden="hidden" id="visitorId" value="${planVisitor.visitorId}"/>
+        <div class="form-horizontal" id="queryInfoForm">
+            <table class="table table-bordered">
+                <input hidden="hidden" name="id" id="id" value="${planVisitor.id}"/>
+                <tr>
+                    <th colspan="4" style="text-align: center;font-size: 18px;">成都中医药大学附属医院/临床医学院</br>评价表</th>
+                </tr>
+                <tr>
+                    <td colspan="2">&emsp;&emsp;科室：${item.deptName}</td>
+                    <td colspan="2">授课名称：${item.courseName}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">授课教师：${item.teachers}</td>
+                    <td colspan="2">教师职称：${item.teacherTitle}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">授课时间：${item.classTime}</td>
+                    <td colspan="2">授课地点：${item.classPlace}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">总体评价</td>
+                    <td colspan="3">评语：<input style="width:80%;" name="comment" id="comment" value="${form.comment}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">需要补充的意见和建议：<input style="width:80%;" name="proposal" id="proposal" value="${form.proposal}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">督导人：${planVisitor.visitorName}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">督导时间：${form.ddsj}</td>
+                </tr>
+                <tr>
+                    <td colspan="4">照片：</br>
+                        <div id="imgDiv" style="width: 100%;"></div></td>
+                </tr>
+            </table>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <div class="btnDiv1">
+                        <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.addSubmit()"/>
+                        <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+                    </div>
+                    <div class="btnDiv2">
+                        <#button btnCss="info" name="打印" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.printDdpj()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a id="bigA" target="_blank"><span id="bigSpan"></span></a>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/ddpj.js"></script>
+<style>
+    td{
+        word-break : break-all;white-space:pre-wrap;
+    }
+</style>
+<script>
+    laydate.render({
+        elem: '#classTime'
+    });
+    if('${editFlag}'=='view'){
+        $('.btnDiv1').hide();
+        if('${form.ddsj}'!=''){
+            $('.btnDiv2').show();
+        }
+        $('input').attr("readonly","readonly");
+    }else{
+        $('.btnDiv1').show();
+        $('.btnDiv2').hide();
+    }
+
+    $(function () {
+        var imgList='${imgList}';
+        if(imgList!='[]'){
+            var array = imgList.substr(1,imgList.length-2);
+            array = array.split(",");
+            var u='${UPLOAD_BASE_URL}';
+            if(array.length>0){
+                for(var i in array){
+                    var arrayUrl=array[i].trim();
+                    var imgNum= Number(i) + 1;
+                    var img="<img width='150px' height='150px' onclick='show(this.src)' src='"+u+arrayUrl+"' style='margin-right:5px;cursor:pointer;'/>" +
+                            "<input hidden='hidden' id='imgUrl"+imgNum+"' name='imgUrl"+imgNum+"' value='"+arrayUrl+"'/>";
+                    $("#imgDiv").append(img);
+                }
+            }
+        }
+    });
+
+    function show(url)
+    {
+        $("#bigA").attr("href",url);
+        $("#bigSpan").click();
+    }
+</script>
+@}

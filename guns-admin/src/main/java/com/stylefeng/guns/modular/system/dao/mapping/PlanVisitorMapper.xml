@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.PlanVisitorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.PlanVisitor">
+        <id column="id" property="id" />
+        <result column="plan_id" property="planId" />
+        <result column="visite_flag" property="visiteFlag" />
+        <result column="visitor_id" property="visitorId" />
+        <result column="visitor_name" property="visitorName" />
+        <result column="evaluate_score" property="evaluateScore" />
+        <result column="evaluate_type" property="evaluateType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, plan_id, visite_flag, visitor_id, visitor_name, evaluate_score,evaluate_type
+    </sql>
+
+    <select id="queryPlanVisitorList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_plan_visitor where 1 = 1
+        <if test="planId != null and planId !=''">
+            and plan_id = #{planId}
+        </if>
+        <if test="visiteFlag != null and visiteFlag !=''">
+            and visite_flag = #{visiteFlag}
+        </if>
+        <if test="visitorId != null and visitorId !=''">
+            and visitor_id = #{visitorId}
+        </if>
+        <if test="visitorName != null and visitorName !=''">
+            and visitor_name like CONCAT('%',#{visitorName},'%')
+        </if>
+    </select>
+    <select id="getVisitorPJList" parameterType="java.util.Map" resultType="java.util.Map" >
+        SELECT tp.*,
+        <if test="visitorId != null and visitorId !=''">
+            GROUP_CONCAT(IF(pv.visitor_id=#{visitorId},pv.visitor_name,null)) visitors,
+            #{visitorId} visitorIds,
+            SUBSTRING_INDEX(SUBSTRING_INDEX(pv.evaluate_score,'&lt;comment>',-1),'&lt;/comment>',1) comments,
+        </if>
+        <if test="visitorId == null or visitorId ==''">
+            GROUP_CONCAT(pv.visitor_name) visitors,
+            GROUP_CONCAT(pv.visitor_id) visitorIds,
+            GROUP_CONCAT(CONCAT(pv.visitor_name,'：',SUBSTRING_INDEX(SUBSTRING_INDEX(pv.evaluate_score,'&lt;comment>',-1),'&lt;/comment>',1)) SEPARATOR ';') comments,
+        </if>
+        COUNT(pv.visitor_id) num
+        from sys_teaching_plan tp
+        left join sys_plan_visitor pv
+        on tp.id=pv.plan_id
+        where 1=1
+        and pv.visite_flag='Y'
+        <if test="planType != null and planType !=''">
+            and tp.plan_type = #{planType}
+        </if>
+        <if test="beginTime != null and beginTime !=''">
+            and tp.class_time >= #{beginTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and #{endTime} >= tp.class_time
+        </if>
+        <if test="activityType != null and activityType !=''">
+            and tp.activity_type = #{activityType}
+        </if>
+        <if test="deptId != null and deptId !=''">
+            and tp.dept_id = #{deptId}
+        </if>
+        <if test="courseName != null and courseName !=''">
+            and tp.course_name like CONCAT('%',#{courseName},'%')
+        </if>
+        <if test="timeFlag != null and timeFlag !=''">
+            and to_days(CONCAT(tp.class_time,' 00:00:00')) >= to_days(now())
+        </if>
+        <if test="id != null and id !=''">
+            and tp.id = #{id}
+        </if>
+        <if test="visitorName != null and visitorName !=''">
+            and pv.visitor_name like CONCAT('%',#{visitorName},'%')
+        </if>
+        <if test="visitorId != null and visitorId !=''">
+            and pv.visitor_id = #{visitorId}
+        </if>
+        <if test="teachers != null and teachers !=''">
+            and tp.teachers = #{teachers}
+        </if>
+        <if test="classPlace != null and classPlace !=''">
+            and tp.class_place = #{classPlace}
+        </if>
+        <if test="systemId != null and systemId !=''">
+            and tp.systemId = #{systemId}
+        </if>
+        GROUP BY tp.id
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by tp.${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by tp.${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by tp.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+    <select id="getPlanCount"  resultType="java.util.Map" >
+        select tp.plan_type,COUNT(0) totalNum ,COUNT(a.plan_id) visitorNum
+        from sys_teaching_plan tp
+        LEFT JOIN(
+        SELECT DISTINCT pv.plan_id
+        from sys_plan_visitor pv) a
+        on tp.id=a.plan_id
+        GROUP BY tp.plan_type
+    </select>
+    <select id="getPlanCountByDate"  resultType="java.util.Map" >
+        select tp.plan_type PLAN_TYPE,substring(pv.create_time, 7, 2) DATENUM,COUNT(0) COUNTNUM
+        from sys_plan_visitor pv
+        LEFT JOIN sys_teaching_plan tp
+        on pv.plan_id=tp.id
+        where date(pv.create_time) > DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+        GROUP BY tp.plan_type,substring(pv.create_time, 7, 2);
+    </select>
+</mapper>

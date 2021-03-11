@@ -1,0 +1,42 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="queryInfoForm">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" id="planType" value="activity">
+                    <#input id="citySel" name="部门" underline="true" readonly="readonly" hidden="deptId"
+                            clickFun="TeachingPlanInfoDlg.showDeptSelectTree(); return false;" style="background-color: #ffffff !important;"/>
+                    <#input id="classTime" name="时间" underline="true"/>
+                    <#input id="classPlace" name="地点" underline="true"/>
+                    <#input id="memo" name="备注" underline="true"/>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="courseName" name="主题名称" underline="true"/>
+                    <#dictSelector id="activityType" name ="activityType" label="活动类型" code="activity_type" underline="true" />
+                    <#input id="detail" name="内容详情" underline="true"/>
+                </div>
+            </div>
+            <!-- 这是部门选择的下拉框 -->
+            <div id="menuContent" class="menuContent" style="display: none; position: absolute; z-index: 200;">
+                <ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/qthdjh_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#classTime',
+        format: 'yyyy-MM-dd HH:mm',
+        type: 'datetime'
+    });
+</script>
+@}

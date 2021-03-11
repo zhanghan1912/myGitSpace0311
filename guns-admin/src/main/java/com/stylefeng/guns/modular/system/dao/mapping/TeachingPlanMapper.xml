@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.TeachingPlanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.TeachingPlan">
+        <id column="id" property="id" />
+        <result column="plan_type" property="planType" />
+        <result column="course_name" property="courseName" />
+        <result column="activity_type" property="activityType" />
+        <result column="activity_name" property="activityName" />
+        <result column="dept_id" property="deptId" />
+        <result column="dept_name" property="deptName" />
+        <result column="class_time" property="classTime" />
+        <result column="class_place" property="classPlace" />
+        <result column="teachers" property="teachers" />
+        <result column="class_name" property="className" />
+        <result column="class_no" property="classNo" />
+        <result column="class_target" property="classTarget" />
+        <result column="class_number" property="classNumber" />
+        <result column="class_order" property="classOrder" />
+        <result column="detail" property="detail" />
+        <result column="memo" property="memo" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user_id" property="createUserId" />
+        <result column="teacher_title" property="teacherTitle" />
+        <result column="chapter" property="chapter" />
+        <result column="course_unit" property="courseUnit" />
+        <result column="school_hours" property="schoolHours" />
+        <result column="disease" property="disease" />
+        <result column="bed_number" property="bedNumber" />
+        <result column="inpatient_number" property="inpatientNumber" />
+        <result column="case_number" property="caseNumber" />
+        <result column="note_taker" property="noteTaker" />
+        <result column="participants" property="participants" />
+        <result column="systemId" property="systemId" />
+        <result column="systemName" property="systemName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, plan_type, course_name, activity_type, activity_name, dept_id, dept_name, class_time, class_place, teachers, class_name, class_no, class_target, class_number, class_order, detail, memo, create_time, create_user_id, teacher_title, chapter, course_unit, school_hours, disease, bed_number, inpatient_number, case_number, note_taker, participants,systemId,systemName
+    </sql>
+
+    <select id="getTeachignPlanList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_teaching_plan where 1 = 1
+        <if test="planType != null and planType !=''">
+            and plan_type = #{planType}
+        </if>
+        <if test="beginTime != null and beginTime !=''">
+            and class_time >= #{beginTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and #{endTime} >= class_time
+        </if>
+        <if test="activityType != null and activityType !=''">
+            and activity_type = #{activityType}
+        </if>
+        <if test="deptId != null and deptId !=''">
+            and dept_id = #{deptId}
+        </if>
+        <if test="courseName != null and courseName !=''">
+            and course_name like CONCAT('%',#{courseName},'%')
+        </if>
+        <if test="teachers != null and teachers !=''">
+            and teachers like CONCAT('%',#{teachers},'%')
+        </if>
+        <if test="classPlace != null and classPlace !=''">
+            and class_place like CONCAT('%',#{classPlace},'%')
+        </if>
+        <if test="timeFlag != null and timeFlag !=''">
+            and to_days(CONCAT(class_time,' 00:00:00')) >= to_days(now())
+        </if>
+        <if test="systemId != null and systemId !=''">
+            and systemId = #{systemId}
+        </if>
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by ${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by ${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+    <select id="getVisitorTPList" parameterType="java.util.Map" resultType="java.util.Map" >
+        SELECT tp.*,
+        <if test="visitorId != null and visitorId !=''">
+            GROUP_CONCAT(IF(pv.visitor_id=#{visitorId},pv.visitor_name,null)) visitors,
+            GROUP_CONCAT(IF(pv.visitor_id=#{visitorId},'Y',null)) joinFlag,
+        </if>
+        <if test="visitorId == null or visitorId ==''">
+            GROUP_CONCAT(pv.visitor_name) visitors,
+            'N' joinFlag,
+        </if>
+        COUNT(pv.visitor_id) num
+        from sys_teaching_plan tp
+        left join sys_plan_visitor pv
+        on tp.id=pv.plan_id
+        where 1=1
+        <if test="planType != null and planType !=''">
+            and tp.plan_type = #{planType}
+        </if>
+        <if test="beginTime != null and beginTime !=''">
+            and tp.class_time >= #{beginTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and #{endTime} >= tp.class_time
+        </if>
+        <if test="activityType != null and activityType !=''">
+            and tp.activity_type = #{activityType}
+        </if>
+        <if test="deptId != null and deptId !=''">
+            and tp.dept_id = #{deptId}
+        </if>
+        <if test="courseName != null and courseName !=''">
+            and tp.course_name like CONCAT('%',#{courseName},'%')
+        </if>
+        <if test="timeFlag != null and timeFlag !=''">
+            and to_days(CONCAT(tp.class_time,' 00:00:00')) >= to_days(now())
+        </if>
+        <if test="id != null and id !=''">
+            and tp.id = #{id}
+        </if>
+        <if test="systemId != null and systemId !=''">
+            and tp.systemId = #{systemId}
+        </if>
+        GROUP BY tp.id
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by tp.${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by tp.${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by tp.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

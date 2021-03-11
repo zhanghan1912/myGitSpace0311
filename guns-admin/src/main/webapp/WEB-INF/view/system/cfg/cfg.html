@@ -1,0 +1,43 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="queryInfoForm">
+            <div class="row">
+                <input hidden="hidden" name="theoryCfgId" id="theoryCfgId" value="${cfgForm.theoryCfgId}"/>
+                <input hidden="hidden" name="theoryCfgCode" id="theoryCfgCode" value="theory"/>
+                <#input id="theoryCfgValue" name="理论教学督导计划参加人数（单位：人）" value="${cfgForm.theoryCfgValue}" underline="true"/>
+                <input hidden="hidden" name="clinicCfgId" id="clinicCfgId" value="${cfgForm.clinicCfgId}"/>
+                <input hidden="hidden" name="clinicCfgCode" id="clinicCfgCode" value="clinic"/>
+                <#input id="clinicCfgValue" name="临床教学督导计划参加人数（单位：人）" value="${cfgForm.clinicCfgValue}" underline="true"/>
+                <input hidden="hidden" name="invigilateCfgId" id="invigilateCfgId" value="${cfgForm.invigilateCfgId}"/>
+                <input hidden="hidden" name="invigilateCfgCode" id="invigilateCfgCode" value="invigilate"/>
+                <#input id="invigilateCfgValue" name="监考考核督导计划参加人数（单位：人）" value="${cfgForm.invigilateCfgValue}" underline="true"/>
+                <input hidden="hidden" name="circleCfgId" id="circleCfgId" value="${cfgForm.circleCfgId}"/>
+                <input hidden="hidden" name="circleCfgCode" id="circleCfgCode" value="circle"/>
+                <#input id="circleCfgValue" name="轮转督导计划参加人数（单位：人）" value="${cfgForm.circleCfgValue}" underline="true"/>
+                <input hidden="hidden" name="ddpjsjCfgId" id="ddpjsjCfgId" value="${cfgForm.ddpjsjCfgId}"/>
+                <input hidden="hidden" name="ddpjsjCfgCode" id="ddpjsjCfgCode" value="ddpjsj"/>
+                <#input id="ddpjsjCfgValue" name="督导评价时间设置（单位：天）" value="${cfgForm.ddpjsjCfgValue}" underline="true"/>
+                <input hidden="hidden" name="uploadBaseDirId" id="uploadBaseDirId" value="${cfgForm.uploadBaseDirId}"/>
+                <input hidden="hidden" name="uploadBaseDir" id="uploadBaseDir" value="upload_base_dir"/>
+                <#input id="uploadBaseDirValue" name="文件上传物理路径" value="${cfgForm.uploadBaseDirValue}" underline="true"/>
+                <input hidden="hidden" name="uploadBaseUrlId" id="uploadBaseUrlId" value="${cfgForm.uploadBaseUrlId}"/>
+                <input hidden="hidden" name="uploadBaseUrl" id="uploadBaseUrl" value="upload_base_url"/>
+                <#input id="uploadBaseUrlValue" name="文件上传访问根地址" value="${cfgForm.uploadBaseUrlValue}" underline="true"/>
+                <input hidden="hidden" name="uploadBaseUrlXcxId" id="uploadBaseUrlXcxId" value="${cfgForm.uploadBaseUrlXcxId}"/>
+                <input hidden="hidden" name="uploadBaseUrlXcx" id="uploadBaseUrlXcx" value="upload_base_url_xcx"/>
+                <#input id="uploadBaseUrlXcxValue" name="文件上传访问根地址(小程序)" value="${cfgForm.uploadBaseUrlXcxValue}" underline="true"/>
+                <!--<input hidden="hidden" name="downloadTempDirId" id="downloadTempDirId" value="${cfgForm.downloadTempDirId}"/>-->
+                <!--<input hidden="hidden" name="downloadTempDir" id="downloadTempDir" value="download_temp_dir"/>-->
+                <!--<#input id="downloadTempDirValue" name="系统存放临时文件地址" value="${cfgForm.downloadTempDirValue}" underline="true"/>-->
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10" style="text-align: center;">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CfgInfoDlg.addSubmit()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/cfg/cfg.js"></script>
+@}

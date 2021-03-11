@@ -1,0 +1,610 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <input hidden="hidden" id="planId" value="${planVisitor.planId}"/>
+        <input hidden="hidden" id="visitorId" value="${planVisitor.visitorId}"/>
+        <#SelectCon id="evaluateType" name="教学类型">
+        <option value="Sy" >实验类评价表</option>
+        <option value="Kt" >课堂教学评价表</option>
+    </#SelectCon>
+    <div class="form-horizontal" id="queryInfoForm">
+
+        <div id="content"></div>
+        <table class="table table-bordered" id="syjx">
+            <input hidden="hidden" name="id" id="id" value="${planVisitor.id}"/>
+            <tr>
+                <th colspan="6" style="text-align: center;font-size: 18px;">临床医学院教学督导专家听课评价表（实验类）</th>
+            </tr>
+            <tr>
+                <td colspan="2">课程名称：${item.courseName}</td>
+                <td colspan="2">实验内容（项目）：${item.chapter}</td>
+                <td colspan="2">开课单位：${item.courseUnit}</td>
+            </tr>
+            <tr>
+                <td colspan="2">授课教师：${item.teachers}</td>
+                <td colspan="2">教师职称：${item.teacherTitle}</td>
+                <td colspan="2">授课班级：${item.className}</td>
+            </tr>
+            <tr>
+                <td colspan="2">授课时间：${item.classTime}</td>
+                <td colspan="2">地&emsp;&emsp;点：${item.classPlace}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td>类别</td>
+                <td colspan="3">评价项目</td>
+                <td>分值</td>
+                <td>得分</td>
+            </tr>
+            <tr>
+                <td rowspan="4">教学态度（30分）</td>
+                <td colspan="3">1.按教学进程（计划）组织教学，遵守行课纪律。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem1" id="scoreItem1" value="${form.scoreItem1}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">2.备课认真，准备充分，精心组织，教案规范。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem2" id="scoreItem2" value="${form.scoreItem2}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">3.讲课有激情，精神饱满，仪表端庄，着装得体。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem3" id="scoreItem3" value="${form.scoreItem3}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">4.教学作风严谨，注重学生知识、能力、素质培养，认真听取学生意见。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem4" id="scoreItem4" value="${form.scoreItem4}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td rowspan="4">教学内容（30分）</td>
+                <td colspan="3">5.实验内容熟悉，时间安排合理。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem5" id="scoreItem5" value="${form.scoreItem5}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">6.实验目的、内容、方法及注意事项阐述清晰、简练。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem6" id="scoreItem6" value="${form.scoreItem6}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">7.示范操作熟练、规范。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem7" id="scoreItem7" value="${form.scoreItem7}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">8.联系学科发展的新思想，实验内容有利于启发学生的科学思维。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem8" id="scoreItem8" value="${form.scoreItem8}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td rowspan="2">教学方法（20分）</td>
+                <td colspan="3">9.启发式教学，示范性强，能给予学生思考、联想、创新的启迪。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem9" id="scoreItem9" value="${form.scoreItem9}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">10.以学生为实验的主体，全程在岗指导学生实验。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem10" id="scoreItem10" value="${form.scoreItem10}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td rowspan="2">教学效果（20分）</td>
+                <td colspan="3">11.学生实验兴趣浓厚，实验秩序井然。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem11" id="scoreItem11" value="${form.scoreItem11}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">12.完成教学大纲规定的教学内容，教学效果好。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem12" id="scoreItem12" value="${form.scoreItem12}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" rowspan="2">总体评价</td>
+                <td colspan="3">等级：<select style="width:100px;" name="grade" id="grade">
+                    <option value="优">优</option>
+                    <option value="良">良</option>
+                    <option value="中">中</option>
+                    <option value="及格">及格</option>
+                    <option value="不及格">不及格</option>
+                </select></br>（优：90-100分&emsp;良：80-89分&emsp;中：70-79分&emsp;及格：60-69分&emsp;不及格：60分以下）</td>
+                <td colspan="2">总分：<span id="totalScoreSpan"></span></td>
+            </tr>
+            <tr>
+                <td colspan="5">评语：<input style="width:80%;" name="comment" id="comment" value="${form.comment}"/></td>
+            </tr>
+            <tr>
+                <td colspan="6">需要补充的意见和建议：（如实验准备情况、课程安排、学时设计，实验室的灯光、扩音效果、仪器设备运行，室内外的环境，学生到课率、分组情况及课堂纪律等）<input style="width:80%;" name="proposal" id="proposal" value="${form.proposal}"/></td>
+            </tr>
+            <tr>
+                <td colspan="6">督导专家：${planVisitor.visitorName}</td>
+            </tr>
+            <tr>
+                <td colspan="6">授课教师：${item.teachers}</td>
+            </tr>
+            <tr>
+                <td colspan="6">督导时间：${form.ddsj}</td>
+            </tr>
+            <tr>
+                <td colspan="6">照片：</br>
+                    <div id="imgDiv" style="width: 100%;"></div></td>
+            </tr>
+        </table>
+        <table class="table table-bordered" id="ktjx">
+            <input hidden="hidden" name="id" id="id" value="${planVisitor.id}"/>
+            <tr>
+                <th colspan="6" style="text-align: center;font-size: 18px;">成都中医药大学临床医学院教学督导专家听课评价表（课堂教学）</th>
+            </tr>
+            <tr>
+                <td colspan="2">课程名称：${item.courseName}</td>
+                <td colspan="2">章节：${item.chapter}</td>
+                <td colspan="2">开课单位：${item.courseUnit}</td>
+            </tr>
+            <tr>
+                <td colspan="2">授课教师：${item.teachers}</td>
+                <td colspan="2">教师职称：${item.teacherTitle}</td>
+                <td colspan="2">授课班级：${item.className}</td>
+            </tr>
+            <tr>
+                <td colspan="2">授课时间：${item.classTime}</td>
+                <td colspan="2">学   时：${item.schoolHours}</td>
+                <td colspan="2">地&emsp;&emsp;点：${item.classPlace}</td>
+            </tr>
+            <tr>
+                <td>类别</td>
+                <td colspan="3">评价项目</td>
+                <td>分值</td>
+                <td>得分</td>
+            </tr>
+            <tr>
+                <td rowspan="2">教学准备(10分)</td>
+                <td colspan="3">1.教学大纲内容完备；教学日历编写符合教学大纲要求，规范、完整、执行好；选用统编、规划与同行公认的优秀教材。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem1" id="scoreItem1" value="${form.scoreItem1}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">2.深入研究教学大纲要求，深入钻研教学内容和教材，做到融会贯通；精心设计基本概念、重点难点的教学方式，熟悉授课对象的基本情况；教案完整、详尽、规范，有个人特色；备课充分、认真。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem2" id="scoreItem2" value="${form.scoreItem2}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td rowspan="7">课堂讲授（60分）</td>
+                <td colspan="3">3.治学严谨，从严执教；刻苦钻研，勇于创新；精力集中，责任感强；情绪饱满，仪表端庄。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem3" id="scoreItem3" value="${form.scoreItem3}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">4.授课内容讲授清晰、正确、熟练、简要；基本概念、重点、难点交代清楚，讲解透彻；课程内容处理得当，主次分明；注意介绍最新成果，信息量大。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem4" id="scoreItem4" value="${form.scoreItem4}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">5.理论联系实际，采用研究式、启发式、讨论式等教学方法；善于启发学生思维，引导自主学习；注重素质教育和创新能力培养。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem5" id="scoreItem5" value="${form.scoreItem5}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">6.板书工整、规范；合理使用多媒体等现代化教学手段，采用国家精品课程课件或自行研制课件，成效显著。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem6" id="scoreItem6" value="${form.scoreItem6}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+
+            <tr>
+                <td colspan="3">7.基础理论坚实，专业知识深厚，了解学科发展动态；深入理解并认真贯彻教学大纲的要求；语言精练、生动、准确、深入浅出。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem7" id="scoreItem7" value="${form.scoreItem7}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">8.对学生的课外学习（网络课堂作业）积极进行指导，按计划及规定进行课后答疑，效果良好。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem8" id="scoreItem8" value="${form.scoreItem8}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">9.严格遵守教师行为规范，以身作则、言传身教；既热爱学生又严格要求学生，注意优良学风的培养；在教学过程中融会思想道德教育，渗透人文精神、科学精神。</td>
+                <td>5</td>
+                <td><input style="width:30px;" name="scoreItem9" id="scoreItem9" value="${form.scoreItem9}" maxNum="5" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td rowspan="3">教学效果（30分）</td>
+                <td colspan="3">10.授课能吸引学生，学生听课专心认真；师生互动积极，课堂气氛活跃，出勤率高，学风好。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem10" id="scoreItem10" value="${form.scoreItem10}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">11.对授课内容能很好地理解、消化；重点、难点掌握、理解好，。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem11" id="scoreItem11" value="${form.scoreItem11}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td colspan="3">12.考核内容覆盖面全，符合教学大纲要求。命题难易程度适当，有足够区分度；考核过程规范，考试成绩与分布合理；试卷分析客观、完整，有教学改进措施。</td>
+                <td>10</td>
+                <td><input style="width:30px;" name="scoreItem12" id="scoreItem12" value="${form.scoreItem12}" maxNum="10" onchange="TeachingPlanInfoDlg.checkInputScore();"/></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" rowspan="2">总体评价</td>
+                <td colspan="3">等级：<select style="width:100px;" name="grade" id="grade">
+                    <option value="优">优</option>
+                    <option value="良">良</option>
+                    <option value="中">中</option>
+                    <option value="及格">及格</option>
+                    <option value="不及格">不及格</option>
+                </select></br>（优：90-100分&emsp;良：80-89分&emsp;中：70-79分&emsp;及格：60-69分&emsp;不及格：60分以下）</td>
+                <td colspan="2">总分：<span id="totalScoreSpan"></span></td>
+            </tr>
+            <tr>
+                <td colspan="5">评语：<input style="width:80%;" name="comment" id="comment" value="${form.comment}"/></td>
+            </tr>
+
+            <tr>
+                <td colspan="6">督导专家：${planVisitor.visitorName}</td>
+            </tr>
+            <tr>
+                <td colspan="6">授课教师：${item.teachers}</td>
+            </tr>
+            <tr>
+                <td colspan="6">督导时间：${form.ddsj}</td>
+            </tr>
+            <tr>
+                <td colspan="6">照片：</br>
+                    <div id="imgDiv" style="width: 100%;"></div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row btn-group-m-t">
+        <div class="col-sm-10">
+            <div class="btnDiv1">
+                <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.addSubmit()"/>
+                <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TeachingPlanInfoDlg.close()"/>
+            </div>
+            <div class="btnDiv2">
+                <#button btnCss="info" name="打印" id="ensure" icon="fa-check" clickFun="TeachingPlanInfoDlg.printDdpj()"/>
+            </div>
+        </div>
+    </div>
+
+    <a id="bigA" target="_blank"><span id="bigSpan"></span></a>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/system/teachingPlan/ddpj.js"></script>
+<style>
+    td{
+        word-break : break-all;white-space:pre-wrap;
+    }
+</style>
+<script>
+    laydate.render({
+        elem: '#classTime'
+    });
+    if('${editFlag}'=='view'){
+        $('.btnDiv1').hide();
+        if('${form.ddsj}'!=''){
+            $('.btnDiv2').show();
+        }
+        $('input').attr("readonly","readonly");
+    }else{
+        $('.btnDiv1').show();
+        $('.btnDiv2').hide();
+    }
+    var select=document.getElementById("grade");
+    for (var i = 0; i < select.options.length; i++){
+        if (select.options[i].value == '${form.grade}'){
+            select.options[i].selected = true;
+            break;
+        }
+    }
+
+    $(function () {
+        var imgList='${imgList}';
+        if(imgList!='[]'){
+            var array = imgList.substr(1,imgList.length-2);
+            array = array.split(",");
+            var u='${UPLOAD_BASE_URL}';
+            if(array.length>0){
+                for(var i in array){
+                    var arrayUrl=array[i].trim();
+                    var imgNum= Number(i) + 1;
+                    var img="<img width='150px' height='150px' onclick='show(this.src)' src='"+u+arrayUrl+"' style='margin-right:5px;cursor:pointer;'/>" +
+                        "<input hidden='hidden' id='imgUrl"+imgNum+"' name='imgUrl"+imgNum+"' value='"+arrayUrl+"'/>";
+                    $("#imgDiv").append(img);
+                }
+            }
+        }
+        if('${planVisitor.evaluateType}' == 'Kt'){
+            var parent=document.getElementById("queryInfoForm");
+            var child=document.getElementById("syjx");
+            parent.removeChild(child);
+            $("#evaluateType option[value='Kt']").attr("selected","selected");
+            $("#evaluateType").attr("disabled","disabled");
+            TeachingPlanInfoDlg.loadToalScore();
+        }
+        if('${planVisitor.evaluateType}' == 'Sy'){
+            var parent=document.getElementById("queryInfoForm");
+            var child=document.getElementById("ktjx");
+            parent.removeChild(child);
+            $("#evaluateType option[value='Sy']").attr("selected","selected");
+            $("#evaluateType").attr("disabled","disabled");
+            TeachingPlanInfoDlg.loadToalScore();
+        }
+        if ('${planVisitor.evaluateType}' =='') {
+            $("#ktjx").attr("hidden","hidden");
+        }
+    });
+    $("#evaluateType").change(function(){
+        var checkValue= $("#evaluateType option:selected").val();
+        if(checkValue=='Kt'){
+            $("#ktjx").removeAttr("hidden","hidden");
+          /*  var parent=document.getElementById("queryInfoForm");
+            var child=document.getElementById("syjx");
+            parent.removeChild(child);*/
+          var  ktChild="<table class='table table-bordered' id='ktjx'>\n" +
+              "            <input hidden='hidden' name='id' id='id' value=${planVisitor.id}/>\n" +
+              "            <tr>\n" +
+              "                <th colspan='6' style='text-align: center;font-size: 18px;'>成都中医药大学临床医学院教学督导专家听课评价表（课堂教学）</th>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='2'>课程名称：${item.courseName}</td>\n" +
+              "                <td colspan='2'>章节：${item.chapter}</td>\n" +
+              "                <td colspan='2'>开课单位：${item.courseUnit}</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='2'>授课教师：${item.teachers}</td>\n" +
+              "                <td colspan='2'>教师职称：${item.teacherTitle}</td>\n" +
+              "                <td colspan='2'>授课班级：${item.className}</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='2'>授课时间：${item.classTime}</td>\n" +
+              "                <td colspan='2'>学   时：${item.schoolHours}</td>\n" +
+              "                <td colspan='2'>地&emsp;&emsp;点：${item.classPlace}</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td>类别</td>\n" +
+              "                <td colspan='3'>评价项目</td>\n" +
+              "                <td>分值</td>\n" +
+              "                <td>得分</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td rowspan='2'>教学准备(10分)</td>\n" +
+              "                <td colspan='3'>1.教学大纲内容完备；教学日历编写符合教学大纲要求，规范、完整、执行好；选用统编、规划与同行公认的优秀教材。</td>\n" +
+              "                <td>5</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem1' id='scoreItem1' value='${form.scoreItem1}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>2.深入研究教学大纲要求，深入钻研教学内容和教材，做到融会贯通；精心设计基本概念、重点难点的教学方式，熟悉授课对象的基本情况；教案完整、详尽、规范，有个人特色；备课充分、认真。</td>\n" +
+              "                <td>5</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem2' id='scoreItem2' value='${form.scoreItem2}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td rowspan='7'>课堂讲授（60分）</td>\n" +
+              "                <td colspan='3'>3.治学严谨，从严执教；刻苦钻研，勇于创新；精力集中，责任感强；情绪饱满，仪表端庄。</td>\n" +
+              "                <td>5</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem3' id='scoreItem3' value='${form.scoreItem3}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>4.授课内容讲授清晰、正确、熟练、简要；基本概念、重点、难点交代清楚，讲解透彻；课程内容处理得当，主次分明；注意介绍最新成果，信息量大。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem4' id='scoreItem4' value='${form.scoreItem4}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>5.理论联系实际，采用研究式、启发式、讨论式等教学方法；善于启发学生思维，引导自主学习；注重素质教育和创新能力培养。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem5' id='scoreItem5' value='${form.scoreItem5}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>6.板书工整、规范；合理使用多媒体等现代化教学手段，采用国家精品课程课件或自行研制课件，成效显著。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem6' id='scoreItem6' value='${form.scoreItem6}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>7.基础理论坚实，专业知识深厚，了解学科发展动态；深入理解并认真贯彻教学大纲的要求；语言精练、生动、准确、深入浅出。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem7' id='scoreItem7' value='${form.scoreItem7}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>8.对学生的课外学习（网络课堂作业）积极进行指导，按计划及规定进行课后答疑，效果良好。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem8' id='scoreItem8' value='${form.scoreItem8}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>9.严格遵守教师行为规范，以身作则、言传身教；既热爱学生又严格要求学生，注意优良学风的培养；在教学过程中融会思想道德教育，渗透人文精神、科学精神。</td>\n" +
+              "                <td>5</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem9' id='scoreItem9' value='${form.scoreItem9}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td rowspan='3'>教学效果（30分）</td>\n" +
+              "                <td colspan='3'>10.授课能吸引学生，学生听课专心认真；师生互动积极，课堂气氛活跃，出勤率高，学风好。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem10' id='scoreItem10' value='${form.scoreItem10}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>11.对授课内容能很好地理解、消化；重点、难点掌握、理解好，。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem11' id='scoreItem11' value='${form.scoreItem11}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='3'>12.考核内容覆盖面全，符合教学大纲要求。命题难易程度适当，有足够区分度；考核过程规范，考试成绩与分布合理；试卷分析客观、完整，有教学改进措施。</td>\n" +
+              "                <td>10</td>\n" +
+              "                <td><input style='width:30px;' name='scoreItem12' id='scoreItem12' value='${form.scoreItem12}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td style='text-align: center;' rowspan='2'>总体评价</td>\n" +
+              "                <td colspan='3'>等级：<select style='width:100px;' name='grade' id='grade'>\n" +
+              "                    <option value='优'>优</option>\n" +
+              "                    <option value='良'>良</option>\n" +
+              "                    <option value='中'>中</option>\n" +
+              "                    <option value='及格'>及格</option>\n" +
+              "                    <option value='不及格'>不及格</option>\n" +
+              "                </select></br>（优：90-100分&emsp;良：80-89分&emsp;中：70-79分&emsp;及格：60-69分&emsp;不及格：60分以下）</td>\n" +
+              "                <td colspan='2'>总分：<span id='totalScoreSpan'></span></td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='5'>评语：<input style='width:80%;' name='comment' id='comment' value='${form.comment}'/></td>\n" +
+              "            </tr>\n" +
+              "\n" +
+              "            <tr>\n" +
+              "                <td colspan='6'>督导专家：${planVisitor.visitorName}</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='6'>授课教师：${item.teachers}</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='6'>督导时间：${form.ddsj}</td>\n" +
+              "            </tr>\n" +
+              "            <tr>\n" +
+              "                <td colspan='6'>照片：</br>\n" +
+              "                    <div id='imgDiv' style='width: 100%;'></div></td>\n" +
+              "            </tr>\n" +
+              "        </table>"
+            var parent=document.getElementById("queryInfoForm");
+            var child=document.getElementById("ktjx");
+            var child2=document.getElementById("syjx");
+            if(child!=null){
+                parent.removeChild(child);
+            }
+            if(child2!=null){
+                parent.removeChild(child2);
+            }
+            parent.innerHTML = ktChild
+        }
+        if(checkValue=='Sy') {
+            var syChild="  <table class='table table-bordered' id='syjx'>\n" +
+                "            <input hidden='hidden' name='id' id='id' value='${planVisitor.id}'/>\n" +
+                "            <tr>\n" +
+                "                <th colspan='6' style='text-align: center;font-size: 18px;'>临床医学院教学督导专家听课评价表（实验类）</th>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='2'>课程名称：${item.courseName}</td>\n" +
+                "                <td colspan='2'>实验内容（项目）：${item.chapter}</td>\n" +
+                "                <td colspan='2'>开课单位：${item.courseUnit}</td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='2'>授课教师：${item.teachers}</td>\n" +
+                "                <td colspan='2'>教师职称：${item.teacherTitle}</td>\n" +
+                "                <td colspan='2'>授课班级：${item.className}</td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='2'>授课时间：${item.classTime}</td>\n" +
+                "                <td colspan='2'>地&emsp;&emsp;点：${item.classPlace}</td>\n" +
+                "                <td colspan='2'></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td>类别</td>\n" +
+                "                <td colspan='3'>评价项目</td>\n" +
+                "                <td>分值</td>\n" +
+                "                <td>得分</td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td rowspan='4'>教学态度（30分）</td>\n" +
+                "                <td colspan='3'>1.按教学进程（计划）组织教学，遵守行课纪律。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem1' id='scoreItem1' value='${form.scoreItem1}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>2.备课认真，准备充分，精心组织，教案规范。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem2' id='scoreItem2' value='${form.scoreItem2}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>3.讲课有激情，精神饱满，仪表端庄，着装得体。</td>\n" +
+                "                <td>5</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem3' id='scoreItem3' value='${form.scoreItem3}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>4.教学作风严谨，注重学生知识、能力、素质培养，认真听取学生意见。</td>\n" +
+                "                <td>5</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem4' id='scoreItem4' value='${form.scoreItem4}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td rowspan='4'>教学内容（30分）</td>\n" +
+                "                <td colspan='3'>5.实验内容熟悉，时间安排合理。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem5' id='scoreItem5' value='${form.scoreItem5}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>6.实验目的、内容、方法及注意事项阐述清晰、简练。</td>\n" +
+                "                <td>5</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem6' id='scoreItem6' value='${form.scoreItem6}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>7.示范操作熟练、规范。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem7' id='scoreItem7' value='${form.scoreItem7}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>8.联系学科发展的新思想，实验内容有利于启发学生的科学思维。</td>\n" +
+                "                <td>5</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem8' id='scoreItem8' value='${form.scoreItem8}' maxNum='5' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td rowspan='2'>教学方法（20分）</td>\n" +
+                "                <td colspan='3'>9.启发式教学，示范性强，能给予学生思考、联想、创新的启迪。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem9' id='scoreItem9' value='${form.scoreItem9}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>10.以学生为实验的主体，全程在岗指导学生实验。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem10' id='scoreItem10' value='${form.scoreItem10}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td rowspan='2'>教学效果（20分）</td>\n" +
+                "                <td colspan='3'>11.学生实验兴趣浓厚，实验秩序井然。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem11' id='scoreItem11' value='${form.scoreItem11}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='3'>12.完成教学大纲规定的教学内容，教学效果好。</td>\n" +
+                "                <td>10</td>\n" +
+                "                <td><input style='width:30px;' name='scoreItem12' id='scoreItem12' value='${form.scoreItem12}' maxNum='10' onchange='TeachingPlanInfoDlg.checkInputScore();'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td style='text-align: center;' rowspan='2'>总体评价</td>\n" +
+                "                <td colspan='3'>等级：<select style='width:100px;' name='grade' id='grade'>\n" +
+                "                    <option value='优'>优</option>\n" +
+                "                    <option value='良'>良</option>\n" +
+                "                    <option value='中'>中</option>\n" +
+                "                    <option value='及格'>及格</option>\n" +
+                "                    <option value='不及格'>不及格</option>\n" +
+                "                </select></br>（优：90-100分&emsp;良：80-89分&emsp;中：70-79分&emsp;及格：60-69分&emsp;不及格：60分以下）</td>\n" +
+                "                <td colspan='2'>总分：<span id='totalScoreSpan'></span></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='5'>评语：<input style='width:80%;' name='comment' id='comment' value='${form.comment}'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='6'>需要补充的意见和建议：（如实验准备情况、课程安排、学时设计，实验室的灯光、扩音效果、仪器设备运行，室内外的环境，学生到课率、分组情况及课堂纪律等）<input style='width:80%;' name='proposal' id='proposal' value='${form.proposal}'/></td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='6'>督导专家：${planVisitor.visitorName}</td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='6'>授课教师：${item.teachers}</td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='6'>督导时间：${form.ddsj}</td>\n" +
+                "            </tr>\n" +
+                "            <tr>\n" +
+                "                <td colspan='6'>照片：</br>\n" +
+                "                    <div id='imgDiv' style='width: 100%;'></div></td>\n" +
+                "            </tr>\n" +
+                "        </table>"
+            var parent=document.getElementById("queryInfoForm");
+            var child=document.getElementById("ktjx");
+            var child2=document.getElementById("syjx");
+            if(child!=null){
+                parent.removeChild(child);
+            }
+            if(child2!=null){
+                parent.removeChild(child2);
+            }
+            parent.innerHTML = syChild
+        }
+    });
+    function show(url)
+    {
+        $("#bigA").attr("href",url);
+        $("#bigSpan").click();
+    }
+</script>
+@}
